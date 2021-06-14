@@ -1,15 +1,32 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <nb-card>
-                <nb-card-header>
-                    Login
-                </nb-card-header>
-                <nb-card-body>
-                    <input placeholder="username" type="text">
-                    <input placeholder="password" type="password">
-                </nb-card-body>
-            </nb-card>
+<nb-layout>
+    <nb-layout-column>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="margin-top col-md-4 mx-auto">
+                    <nb-card class="text-center margin-top">
+                        <nb-card-header>
+                            <div>
+                                <img class="logo" src="../../../assets/images/placeholder.com-logo1.png">
+                            </div>
+                        </nb-card-header>
+                        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+                            <nb-card-body class="margins"> 
+                                <div class="text-center mx-auto">
+                                    <input nbInput fieldSize="medium" class="login-input" name="username" ngModel #username required placeholder="username" type="text">
+                                </div>
+                                <div class="text-center mx-auto">
+                                    <input nbInput fieldSize="medium" class="login-input" name="password" ngModel #password required placeholder="password" minlength="6" maxlength="12" type="password">
+                                </div>
+                            </nb-card-body>
+                            <nb-card-footer>
+                                <div>
+                                    <button nbButton outline status="success">Login</button>
+                                </div>
+                            </nb-card-footer>
+                        </form>
+                    </nb-card>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </nb-layout-column>
+</nb-layout>

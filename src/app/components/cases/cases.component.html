@@ -1,1 +1,11 @@
-<p>cases works!</p>
+<nb-layout>
+    <nb-layout-column>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ng2-smart-table [settings]="settings" (userRowSelect)="openModal()" [source]="data"></ng2-smart-table>
+                </div>
+            </div>
+        </div>
+    </nb-layout-column>
+</nb-layout>

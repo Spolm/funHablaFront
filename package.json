@@ -25,6 +25,8 @@
     "@nebular/theme": "^5.1.0",
     "bootstrap": "^5.0.1",
     "eva-icons": "^1.1.2",
+    "ng2-completer": "^9.0.1",
+    "ng2-smart-table": "^1.7.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
