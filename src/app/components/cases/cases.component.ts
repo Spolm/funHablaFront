@@ -14,6 +14,7 @@ export class CasesComponent implements OnInit {
   }
 
   settings = {
+    mode: 'external',
     columns: {
       expedient: {
         title: 'Nº de Expediente'
@@ -25,15 +26,22 @@ export class CasesComponent implements OnInit {
         title: 'Nombre del Paciente'
       },
       date: {
-        title: 'Fecha'
+        title: 'Fecha',
+        type: 'date'
       }
     },
     actions: {
       position: 'right',
-      add: true,
-      edit: false,
-      delete: false
+      edit: true,
+      delete: true
+    },
+    add: {
+      addButtonContent: '<i class="plus-outline"></i>',
+    },
+    delete: {
+      confirmDelete: true
     }
+
   };
 
   data = [
@@ -41,13 +49,13 @@ export class CasesComponent implements OnInit {
       expedient: 1,
       doctor: "Leanne Graham",
       patient: "Bret",
-      date: "Sincere@april.biz"
+      date: "27/10/2021"
     },
     {
       expedient: 2,
       doctor: "Ervin Howell",
       patient: "Antonette",
-      date: "Shanna@melissa.tv"
+      date: "27/10/2021"
     },
     
     
@@ -55,12 +63,23 @@ export class CasesComponent implements OnInit {
       expedient: 3,
       doctor: "Nicholas DuBuque",
       patient: "Nicholas.Stanton",
-      date: "Rey.Padberg@rosamond.biz"
+      date: "27/10/2021"
     }
   ]
 
   openModal() {
-    console.log("ASI ES")
+    console.log("Detalles");
+  }
+
+  add() {
+    console.log("Nuevo");
+  }
+
+  edit() {
+    console.log("Editar");
+  }
+  delete() {
+    console.log("Borrar");
   }
 
 }
