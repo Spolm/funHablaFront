@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
-// import {GridUtil} from '../entities/util/grid.util';
+import {GridUtil} from '../utils/grid.util';
 // import {ReportColumnUtil} from '../entities/util/report/report.column.util';
 // import {CsvService, ExcelService, PdfService} from '../utils/exports';
 // import {FileUtil} from '../utils/file.util';
@@ -8,7 +8,7 @@ import {HttpService} from './http.service';
 import {Router} from '@angular/router';
 import {NbDialogRef} from '@nebular/theme/components/dialog/dialog-ref';
 import {GridNg2SmartTableConfigUtil} from '../utils/smart-table-utils/grid.ng2.smart.table.config.util';
-// import {TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class GridService {
     //public oExcelService: ExcelService,
     //public oPdfService: PdfService,
     public oRouter: Router,
-    //private oTranslateService: TranslateService,
+    private oTranslateService: TranslateService,
   ) {
     this.newConfig();
     this.cleanGridComponent();
@@ -182,28 +182,28 @@ export class GridService {
             path: this.config.uri.report,
             showSuccess: false,
           }).then((result) => {
-            this.http().object().timeout(100).then(() => {
-              this.oFileService.downloadFileFromBase64(result.base64);
-            });
+            // this.http().object().timeout(100).then(() => {
+            //   this.oFileService.downloadFileFromBase64(result.base64);
+            // });
           });
         } else {
-          switch (this.config.reportData.type) {
-            case 'pdf':
-              this.oPdfService.addImage(logo).then(o => {
-                o.addReportUtil(this.config.reportData).getPDF().download(this.config.reportData.name + '.' + this.config.reportData.type);
-              });
-              break;
-            case 'xls':
-            case 'xlsx':
-              this.oExcelService.addImage(logo, 'A1:B4').then(o => {
-                o.addReportUtil(this.config.reportData, 'A5').generate(this.config.reportData.name);
-              });
-              break;
-            case 'csv':
-              this.oCsvService.addReportUtil(this.config.reportData).generate(this.config.reportData.name);
-              break;
-            default:
-          }
+          // switch (this.config.reportData.type) {
+          //   case 'pdf':
+          //     this.oPdfService.addImage(logo).then(o => {
+          //       o.addReportUtil(this.config.reportData).getPDF().download(this.config.reportData.name + '.' + this.config.reportData.type);
+          //     });
+          //     break;
+          //   case 'xls':
+          //   case 'xlsx':
+          //     this.oExcelService.addImage(logo, 'A1:B4').then(o => {
+          //       o.addReportUtil(this.config.reportData, 'A5').generate(this.config.reportData.name);
+          //     });
+          //     break;
+          //   case 'csv':
+          //     this.oCsvService.addReportUtil(this.config.reportData).generate(this.config.reportData.name);
+          //     break;
+          //   default:
+          // }
         }
       } else {
         this.oHttpService.alert().openDialog({
@@ -358,15 +358,15 @@ export class GridService {
           add = col['exclude'];
         }
 
-        if (add) {
-          const column: ReportColumnUtil = new ReportColumnUtil();
-          column.title = col['title'];
-          column.type = col['type'];
-          column.valuePrepareFunction = col['valuePrepareFunction'];
-          column.attribute = t.http().object().isNotNull(col['attribute']) ? col['attribute'] : name;
+        // if (add) {
+        //   const column: ReportColumnUtil = new ReportColumnUtil();
+        //   column.title = col['title'];
+        //   column.type = col['type'];
+        //   column.valuePrepareFunction = col['valuePrepareFunction'];
+        //   column.attribute = t.http().object().isNotNull(col['attribute']) ? col['attribute'] : name;
 
-          t.config.reportData.columns.push(column);
-        }
+        //   t.config.reportData.columns.push(column);
+        // }
 
         return settings.columns[name];
       });
