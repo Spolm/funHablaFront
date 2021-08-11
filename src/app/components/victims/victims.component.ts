@@ -35,7 +35,7 @@ export class VictimsComponent implements OnInit {
   // HttpClient API get() method => Fetch victims list
   getVictims() //: Observable<Victim>
   {
-    return this.oHttp.get<Victim>(this.apiUrl + 'victimList?name',  {observe: 'response'}).subscribe(resp => {
+    return this.oHttp.get<Victim>(this.apiUrl + 'victimList/?name',  {observe: 'response'}).subscribe(resp => {
       // display its headers
       const victims = resp;
       console.log(victims);
