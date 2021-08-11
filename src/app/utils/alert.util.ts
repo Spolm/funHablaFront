@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {AlertMessageComponent} from '../components/alert.message.component';
+// import {AlertMessageComponent} from './components/alert.message.component';
 import {NbDialogService, NbToastrService} from '@nebular/theme';
 import {NbToastrConfig} from '@nebular/theme/components/toastr/toastr-config';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -57,10 +57,10 @@ export class AlertUtil {
     this.dataAlert.type = type || 'success';
     this.dataAlert.open = true;
 
-    this.timeout(10).then(() => this.alert.emit(this.dataAlert));
+    //this.timeout(10).then(() => this.alert.emit(this.dataAlert));
 
     if (!keep) {
-      this.timeout(8 * 1000).then(() => this.endAlert());
+      //this.timeout(8 * 1000).then(() => this.endAlert());
     }
   }
 
@@ -69,7 +69,7 @@ export class AlertUtil {
    */
   public endAlert() {
     this.dataAlert.open = false;
-    this.timeout(2 * 1000).then(() => this.alert.emit(this.dataAlert));
+    //this.timeout(2 * 1000).then(() => this.alert.emit(this.dataAlert));
   }
 
   /**
@@ -88,9 +88,9 @@ export class AlertUtil {
   }) {
     _context.content = this.sanitizer().bypassSecurityTrustHtml(_context.content || '');
 
-    this.dialog().open(AlertMessageComponent, {
-      context: _context,
-    });
+    // this.dialog().open(AlertMessageComponent, {
+    //   context: _context,
+    // });
   }
 
   showToast(context: { title: string, message: string, userConfig?: Partial<NbToastrConfig> }) {
@@ -110,12 +110,12 @@ export class AlertUtil {
    *
    * @param time
    */
-  public timeout(time: number): Promise<any> {
-    return new Promise<any>((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, time);
-    });
-  }
+  // public timeout(time: number): Promise<any> {
+  //   return new Promise<any>((resolve) => {
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, time);
+  //   });
+  // }
 
 }

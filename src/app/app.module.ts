@@ -15,6 +15,8 @@ import { AlertComponent } from './components/alert/alert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DetailsComponent } from './components/cases/details/details.component';
+import { VictimsComponent } from './components/victims/victims.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { DetailsComponent } from './components/cases/details/details.component';
     CasesComponent,
     LoginComponent,
     AlertComponent,
-    DetailsComponent
+    DetailsComponent,
+    VictimsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { DetailsComponent } from './components/cases/details/details.component';
     NbEvaIconsModule,
     Ng2SmartTableModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

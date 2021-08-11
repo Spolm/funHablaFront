@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

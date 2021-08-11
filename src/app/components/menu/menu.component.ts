@@ -20,6 +20,11 @@ export class MenuComponent {
       icon: 'briefcase-outline',
     },
     {
+      title: 'Victims',
+      link: 'victims',
+      icon: 'person-outline',
+    },
+    {
       title: 'Logout',
       icon: 'unlock-outline',
     },
