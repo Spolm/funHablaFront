@@ -20,7 +20,55 @@ export class VictimsComponent implements OnInit {
 
   }
 
-  victimList: Victim[];
+  settings = {
+    mode: 'external',
+    columns: {
+      expedient_number: {
+        title: 'Nº de expediente'
+      },
+      name: {
+        title: 'Nombre'
+      },
+      second_name: {
+        title: 'Segundo nombre'
+      },
+      lastname: {
+        title: 'Apellido'
+      },
+      age: {
+        title: 'Edad'
+      },
+      occupation: {
+        title: 'Ocupación'
+      },
+      phone_number: {
+        title: 'Nº de telefono'
+      },
+      phone_number2: {
+        title: 'Nº de telefono 2'
+      },
+      email: {
+        title: 'Correo Electronico'
+      },
+      birthdate: {
+        title: 'Fecha de Nacimiento'
+      },
+      reference: {
+        title: 'Referencia'
+      },
+    },
+    actions: {
+      position: 'right',
+      add:true,
+      edit: true,
+      delete: true
+    },
+    delete: {
+      confirmDelete: true
+    }
+
+  };
+  victimList;
   // Http Options
   httpOptions = {
      headers: new HttpHeaders({
@@ -29,17 +77,26 @@ export class VictimsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-   this.getVictims();
+    this.victimList = this.getVictims()
+    
+    
   }
 
   // HttpClient API get() method => Fetch victims list
-  getVictims() //: Observable<Victim>
+  getVictims()
   {
-    return this.oHttp.get<Victim>(this.apiUrl + 'victimList/?name',  {observe: 'response'}).subscribe(resp => {
-      // display its headers
-      const victims = resp;
-      console.log(victims);
-    }); 
+    this.oHttp.get<Victim>(this.apiUrl + 'victimList/?name',  {observe: 'response'}).toPromise().then(res =>
+      {
+        this.victimList = res.body;
+        console.log(this.victimList)
+      })
+    // .subscribe(resp => {
+    //   const victims = resp.body[0];
+    //   this.victimList = victims as Victim[];
+    //   console.log(this.victimList)
+      
+    //   return this.victimList
+    // }); 
   }
 
   // Error handling
@@ -55,5 +112,7 @@ export class VictimsComponent implements OnInit {
     window.alert(errorMessage);
     return throwError(errorMessage);
  }
+
+ 
 
 }
