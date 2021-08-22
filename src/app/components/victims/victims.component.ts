@@ -1,10 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Victim } from 'src/app/models/victim';
-//import { HttpService } from 'src/app/services/http.service';
-import { environment } from 'src/environments/environment';
+import { VictimService } from 'src/app/services/victim.service';
+import { VictimDetailsComponent } from './victim-details/victim-details.component';
 
 @Component({
   selector: 'app-victims',
@@ -13,9 +14,10 @@ import { environment } from 'src/environments/environment';
 })
 export class VictimsComponent implements OnInit {
 
-  apiUrl = environment.apiUrl;
+  // public config: GridNg2SmartTableConfigUtil;
   constructor(
-    private oHttp: HttpClient,
+    private readonly victimService: VictimService,
+    private dialogService: NbDialogService
   ) {
 
   }
@@ -77,26 +79,16 @@ export class VictimsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.victimList = this.getVictims()
-    
-    
+    this.getVictims();
   }
 
   // HttpClient API get() method => Fetch victims list
   getVictims()
   {
-    this.oHttp.get<Victim>(this.apiUrl + 'victimList/?name',  {observe: 'response'}).toPromise().then(res =>
+    this.victimService.getVictims().subscribe( res => 
       {
-        this.victimList = res.body;
-        console.log(this.victimList)
+        this.victimList = res;
       })
-    // .subscribe(resp => {
-    //   const victims = resp.body[0];
-    //   this.victimList = victims as Victim[];
-    //   console.log(this.victimList)
-      
-    //   return this.victimList
-    // }); 
   }
 
   // Error handling
@@ -112,6 +104,22 @@ export class VictimsComponent implements OnInit {
     window.alert(errorMessage);
     return throwError(errorMessage);
  }
+
+  onSelect(event, context?: any): NbDialogRef<any> {
+    console.log(event.data);
+    return this.dialogService.open(VictimDetailsComponent, {context: event.data})
+  }
+
+  add() {
+    console.log("Nuevo");
+  }
+
+  edit() {
+    console.log("Editar");
+  }
+  delete() {
+    console.log("Borrar");
+  }
 
  
 

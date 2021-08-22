@@ -1,4 +1,4 @@
-export class Victim {
+export interface Victim {
     id: string;
     aggressor_link: string;
     abuse_type: string;

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbButtonModule, NbInputModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbButtonModule, NbInputModule, NbDialogModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -17,6 +17,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DetailsComponent } from './components/cases/details/details.component';
 import { VictimsComponent } from './components/victims/victims.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VictimDetailsComponent } from './components/victims/victim-details/victim-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     AlertComponent,
     DetailsComponent,
-    VictimsComponent
+    VictimsComponent,
+    VictimDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     NoopAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
+    NbDialogModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbCardModule,

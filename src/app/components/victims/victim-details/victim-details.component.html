@@ -1,0 +1,49 @@
+<form name="form" (ngSubmit)="onSubmit()" #form="ngForm" ngForm>
+<nb-card>
+    <nb-card-header> test</nb-card-header>
+    <nb-card-body>
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input nbInput name="name" class="form-control" [(ngModel)]="details.name" placeholder='{{details.name}}'>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <label>Apellido</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input nbInput placeholder='{{details.lastname}}'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input nbInput placeholder='{{details.name}}'>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <label>Apellido</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input nbInput placeholder='{{details.lastname}}'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nb-card-body>
+        <nb-card-footer>
+            <button nbButton type="submit" status="success">Guardar</button>
+            <button nbButton status="danger" (click)="close()">Cancelar</button>
+        </nb-card-footer>
+    </nb-card>
+</form>
