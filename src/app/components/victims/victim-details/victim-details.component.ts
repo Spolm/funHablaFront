@@ -35,7 +35,7 @@ export class VictimDetailsComponent implements OnInit {
 
   save(model) {
     console.log("model", model);
-    this.victimService.updateVictim(this.details.id, model);
+    this.victimService.updateVictim(model.id, model).subscribe();
     // this.oHttp.put(this.apiUrl + '/victim/' + this.details.id, model);
   }
 

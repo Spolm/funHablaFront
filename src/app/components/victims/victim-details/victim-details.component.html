@@ -5,44 +5,27 @@
         <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="col-md-12">
-                            <label>Nombre</label>
-                        </div>
-                        <div class="col-md-12">
-                            <input nbInput name="name" class="form-control" [(ngModel)]="details.name" placeholder='{{details.name}}'>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-12">
-                                <label>Apellido</label>
-                            </div>
-                            <div class="col-md-12">
-                                <input nbInput placeholder='{{details.lastname}}'>
-                            </div>
-                        </div>
+                        <label>Nombre</label>
+                        <input nbInput name="name" class="form-control" [(ngModel)]="details.name" placeholder='{{details.name}}'>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-md-6">
-                        <div class="col-md-12">
-                            <label>Nombre</label>
-                        </div>
-                        <div class="col-md-12">
-                            <input nbInput placeholder='{{details.name}}'>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-12">
-                                <label>Apellido</label>
-                            </div>
-                            <div class="col-md-12">
-                                <input nbInput placeholder='{{details.lastname}}'>
-                            </div>
-                        </div>
+                        <label>Apellido</label>
+                        <input name="lastname" class="form-control" nbInput [(ngModel)]="details.lastname" placeholder='{{details.lastname}}'>
+                    </div> 
+                    <div class="col-md-6">
+                        <label>Expendiente</label>
+                        <input name="expedient_number" class="form-control" readonly nbInput [(ngModel)]="details.expedient_number" placeholder='{{details.expedient_number}}'>
                     </div>
+                    <div class="col-md-6">
+                        <label>S. Nombre</label>
+                        <input name="second_name" class="form-control" nbInput [(ngModel)]="details.second_name" placeholder='{{details.second_name}}'>
+                    </div>                
                 </div>
+                
             </div>
         </nb-card-body>
         <nb-card-footer>
-            <button nbButton type="submit" status="success">Guardar</button>
+            <button nbButton type="submit" status="success" (click)="onSubmit()">Guardar</button>
             <button nbButton status="danger" (click)="close()">Cancelar</button>
         </nb-card-footer>
     </nb-card>
